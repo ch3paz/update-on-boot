@@ -24,3 +24,11 @@ systemctl enable update-on-boot.service
 * Adapt the './files/updatecheck.archlinux.sh' if you like, here also the warnings and forced-reboot could be adjusted
 
 __If you are still brave, REBOOT ;)__
+
+# Hints
+
+If you receive something like
+
+"msg": "Could not upgrade"
+
+from the pacman-module, there is likely an conflict that you need to resolve by hand.
