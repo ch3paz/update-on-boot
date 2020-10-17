@@ -8,7 +8,7 @@
   tasks:
  
     - name: Get all missing updates
-      script: ../files/countupdates.archlinux
+      script: ../files/updatecheck.archlinux.sh
       register: scriptoutput
       args:
         executable: bash
