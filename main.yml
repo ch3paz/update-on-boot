@@ -6,7 +6,7 @@
     - vars/main.yml
 
   tasks:
- 
+
     - name: Get all missing updates
       script: ../files/updatecheck.archlinux.sh
       register: scriptoutput
