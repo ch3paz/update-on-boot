@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: yes
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+ 
+    - name: Get all missing updates
+      script: ../files/countupdates.archlinux
+      register: scriptoutput
+      args:
+        executable: bash
+
+    - name: Send mail
+      mail:
+        to: "{{ mailadress }}"
+        subject: "Updates on {{ ansible_hostname }}"
+        body: "'{{ scriptoutput.stdout }}'"
+
+    - name: These updates will be installed
+      debug: var=scriptoutput.stdout_lines
+
+    - name: Running full systemupdate
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      when: ansible_distribution == "Archlinux"

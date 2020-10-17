@@ -1,0 +1,29 @@
+#!/bin/bash
+
+updateresults=/tmp/updateresults
+
+checkupdates > $updateresults
+
+cntr=0
+cntr=$(cat $updateresults | wc -l)
+
+if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Klinux(?=\s|$)')" == "linux" ];
+then
+    echo -e "\n\n**************************\n\n\
+            REBOOT AS SOON AS POSSIBLE\n\n\
+            **************************\n\n"
+fi
+
+if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Klinux(?=\s|$)')" == "nvidia" ];
+then
+    echo -e "\n\n**************************\n\n\
+            REBOOT AS SOON AS POSSIBLE\n\n\
+            **************************\n\n"
+fi
+
+echo -e "\nNumber of pkgs:\n$cntr\n\nUpdated packages:\n$(cat $updateresults)"
+
+if [ -f $updateresults ]
+then
+  rm -f $updateresults
+fi
