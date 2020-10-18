@@ -3,11 +3,10 @@ Description=Update on boot (via ansible)
 OnFailure=status-email-user@%n.service
 After=network-online.target
 Wants=network-online.target
-#Requires=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/ansible-playbook -i /home/chepaz/projekte/ansible/update-on-boot/inventory /home/chepaz/projekte/ansible/update-on-boot/main.yml
+ExecStart=/usr/bin/ansible-playbook -i /usr/local/update-on-boot/inventory /usr/local/update-on-boot/main.yml
 
 [Install]
 WantedBy=multi-user.target

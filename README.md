@@ -8,11 +8,12 @@ __This performs an UNATTENDED FULL SYSTEM UPGRADE on localhost__
 
 Runs the play on system-boot-time to update the package-cache and install all updates. This is triggered via an systemd-service which uses ansible to perform the steps. A warning is displayed if a new kernel or the nvidia-package has been updated.
 
-# Usage
+# Installation
 
+## Install by hand
 * Install ansible
 * Store this repository wherever you like
-* __Adapt the paths__ in the file './additional/update-on-boot.service' to this location
+* __Adapt the paths__ in the file './files/update-on-boot.service' to this location
 * Copy 'update-on-boot.service' to '/etc/systemd/system/'
 * Enable it:
 
@@ -21,7 +22,26 @@ systemctl enable update-on-boot.service
 ~~~
 
 * Adapt './main.yml' to your needs (e.g. remove the "Send mail" task)
+* Adapt './vars/main.yml' to your needs (e.g. your mailrelay and your mailadress)
 * Adapt the './files/updatecheck.archlinux.sh' if you like, here also the warnings and forced-reboot could be adjusted
+* Adapt all permissions (chmod/chown) to your needs
+
+## Install with ansible
+
+* Install ansible
+* Adapt the files to your needs:
+
+~~~
+./main.yml
+./vars/main.yml
+./files/updatecheck.archlinux.sh
+~~~
+
+* Run as root:
+
+~~~
+ansible-playbook -i inventory install.yml 
+~~~
 
 __If you are still brave, REBOOT ;)__
 
