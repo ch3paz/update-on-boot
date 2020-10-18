@@ -13,7 +13,7 @@ then
     echo -e "\n\n**************************\n\n\
             REBOOT AS SOON AS POSSIBLE\n\n\
             **************************\n\n"
-    $needreboot=1
+    needreboot=1
 fi
 
 if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Klinux(?=\s|$)')" == "nvidia" ];
@@ -21,7 +21,7 @@ then
     echo -e "\n\n**************************\n\n\
             REBOOT AS SOON AS POSSIBLE\n\n\
             **************************\n\n"
-    $needreboot=1
+    needreboot=1
 fi
 
 echo -e "\nNumber of pkgs:\n$cntr\n\nUpdated packages:\n$(cat $updateresults)"
