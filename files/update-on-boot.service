@@ -1,8 +1,12 @@
 [Unit]
 Description=Update on boot (via ansible)
 OnFailure=status-email-user@%n.service
+Requires=network-online.target
 After=network-online.target
 Wants=network-online.target
+Requires=systemd-timesyncd.service
+After=systemd-timesyncd.service
+Wants=systemd-timesyncd.service
 
 [Service]
 Type=oneshot
