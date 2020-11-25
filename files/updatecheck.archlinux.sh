@@ -10,17 +10,13 @@ cntr=$(cat $updateresults | wc -l)
 
 if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Klinux(?=\s|$)')" == "linux" ];
 then
-    echo -e "\n\n**************************\n\n\
-            REBOOT AS SOON AS POSSIBLE\n\n\
-            **************************\n\n"
+    echo -e "\n\n**************************\n\n\REBOOT AS SOON AS POSSIBLE\n\n\**************************\n\n"
     needreboot=1
 fi
 
-if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Klinux(?=\s|$)')" == "nvidia" ];
+if [ "$(cat $updateresults | cut -d ' ' -f1 | grep -P '(^|\s)\Knvidia(?=\s|$)')" == "nvidia" ];
 then
-    echo -e "\n\n**************************\n\n\
-            REBOOT AS SOON AS POSSIBLE\n\n\
-            **************************\n\n"
+    echo -e "\n\n**************************\n\n\REBOOT AS SOON AS POSSIBLE\n\n\**************************\n\n"
     needreboot=1
 fi
 
