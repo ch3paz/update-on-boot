@@ -29,7 +29,17 @@ fi
 
 if [ $needreboot -gt 0 ];
 then
+    # Comment this line if you comment-in the lines below
     echo -e "\nFAKE REBOOT :) because needreboot is: $needreboot\n"
+
+    # Uncomment the next two lines if you want to REBOOT
+    # the system WITHOUT ASKING YOU AGAIN when the linux-
+    # or the nvidia-package are updated.
+    #
+    # You have be warned! ;)
+
+    #echo -e "\nTrigger REBOOT NOW...\n"
+    #touch /tmp/update-on-boot.reboot
 else
     echo -e "\nNo reboot required because needreboot is: $needreboot\n"
 fi
