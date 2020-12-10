@@ -8,9 +8,9 @@ __This performs an UNATTENDED FULL SYSTEM UPGRADE on localhost__
 
 * Runs the play on system-boot-time to update the package-cache and install all updates.
 * This is triggered via an systemd-service which uses ansible to perform the steps.
-* A warning is mailed/displayed if a new kernel, or the nvidia-package, were updated
-* The script may be adjusted to just do an __forced-reboot__ without asking you again ;)
-* The package-cache is cleared with 'paccache -k1 -r' on every boot
+* A warning is mailed/displayed if a new kernel, or the nvidia-package, were updated.
+* The script may be adjusted to just do an __forced-reboot without asking you again__ :) 
+* The package-cache is cleared with 'paccache -k1 -r' on every boot.
 
 # Installation
 
