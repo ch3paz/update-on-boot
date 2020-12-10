@@ -13,11 +13,15 @@
       args:
         executable: bash
 
+    - name: Clean paccache -k1 -r
+      command: paccache -k1 -r
+      register: cleanoutput
+
     - name: Send mail
       mail:
         to: "{{ mailadress }}"
         subject: "Updates on {{ ansible_hostname }}"
-        body: "'{{ scriptoutput.stdout }}'"
+        body: "'{{ scriptoutput.stdout }}' '{{ cleanoutput.stdout }}'"
 
     - name: These updates will be installed
       debug: var=scriptoutput.stdout_lines
