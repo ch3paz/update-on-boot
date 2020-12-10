@@ -6,7 +6,11 @@ __Warning:__
 
 __This performs an UNATTENDED FULL SYSTEM UPGRADE on localhost__
 
-Runs the play on system-boot-time to update the package-cache and install all updates. This is triggered via an systemd-service which uses ansible to perform the steps. A warning is displayed if a new kernel or the nvidia-package has been updated or the script may be adjusted to just do an __forced-reboot__ without asking you again ;)
+* Runs the play on system-boot-time to update the package-cache and install all updates.
+* This is triggered via an systemd-service which uses ansible to perform the steps.
+* A warning is mailed/displayed if a new kernel, or the nvidia-package, were updated
+* The script may be adjusted to just do an __forced-reboot__ without asking you again ;)
+* The package-cache is cleared with 'paccache -k1 -r' on every boot
 
 # Installation
 
@@ -23,7 +27,7 @@ systemctl enable update-on-boot.service
 
 * Adapt './main.yml' to your needs (e.g. remove the "Send mail" task)
 * Adapt './vars/main.yml' to your needs (e.g. your mailrelay and your mailadress)
-* Adapt the './files/updatecheck.archlinux.sh' if you like, here also the warnings __and forced-reboot__ could be adjusted
+* Adapt the './files/updatecheck.archlinux.sh' if you like, here also the warnings __and forced-reboot__ could be adjusted/enabled
 * Adapt all permissions (chmod/chown) to your needs
 
 ## Install with ansible
